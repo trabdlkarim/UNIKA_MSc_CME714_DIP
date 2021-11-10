@@ -12,8 +12,9 @@ transformed = transform_intensity(img, a, b);
 
 figure
 subplot(1, 2, 1), imshow(img);
+title('Original Image');
 subplot(1, 2, 2), imshow(transformed);
-
+title('Transformed Image');
 
 % Function to play with the intensity of the  image
 function transformed = transform_intensity(img, a, b)
