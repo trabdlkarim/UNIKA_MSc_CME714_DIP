@@ -6,7 +6,7 @@ function [prob, cumu] = probabilities(freq)
     cumu = zeros(s);
     len = s(1)*s(2); % len = 256
     for i = 1:len
-        prob(i,1) = freq(i,1)/len;
+        prob(i,1) = freq(i,1)/sum(freq);
         prev = i-1;
         if(prev < 1)
             prev = 1;

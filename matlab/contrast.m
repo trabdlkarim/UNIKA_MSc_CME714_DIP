@@ -3,18 +3,22 @@ close all
 clc
 
 img = imread('assets/sudoku.png');
-%img = double(img);
+img = rgb2gray(img);
 
-a = 88; %min(img(:));
-b = 117; %max(img(:));
+a = 160; %min(min(img));
+b = 200; %max(max(img));
 
-transformed = enhance_contrast(rgb2gray(img), a, b);
+transformed = enhance_contrast(img, a, b);
 
 figure
-subplot(1, 2, 1), imshow(img);
+subplot(2, 2, 1), imshow(img);
 title('Original Image');
-subplot(1, 2, 2), imshow(transformed);
+subplot(2, 2, 2), imshow(transformed);
 title('Contrasted Image');
+subplot(2, 2, 3), imhist(img);
+title('Original Histogram');
+subplot(2, 2, 4), imhist(transformed);
+title('Contrasted Histogram');
 
 % Variant of the intensity transformation by enhancing the
 % contrast of the given image
@@ -29,7 +33,7 @@ function contrasted = enhance_contrast(img, a, b)
            else
                px = (((255-b)*px) + (255*(b - a)))/(255-a);
            end
-           contrasted(i,j) = px;
+           contrasted(i,j) = round(px);
         end
    end
 end
