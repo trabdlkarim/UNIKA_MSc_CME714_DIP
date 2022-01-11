@@ -1,7 +1,11 @@
 clearvars
 
 original = imread('eight.tif');
+<<<<<<< HEAD
 noisy = imnoise(original, 'salt & pepper', 0.2);
+=======
+noisy = imnoise(original, 'salt & pepper', 0.02);
+>>>>>>> a12fcf1e3064306a2e1ffe007ebdeb25ce2e2a4a
 [x, y] = size(original);
 filtered = noisy;
 
